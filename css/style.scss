@@ -1,0 +1,335 @@
+@font-face {
+  font-family: 'RalewayRegular';
+  src: url('../fonts/RalewayRegular.eot');
+  src: url('../fonts/RalewayRegular.eot') format('embedded-opentype'),
+  url('../fonts/RalewayRegular.woff2') format('woff2'),
+  url('../fonts/RalewayRegular.woff') format('woff'),
+  url('../fonts/RalewayRegular.ttf') format('truetype'),
+  url('../fonts/RalewayRegular.svg#RalewayRegular') format('svg');
+}
+
+@font-face {
+  font-family: 'RalewayBold';
+  src: url('../fonts/RalewayBold.eot');
+  src: url('../fonts/RalewayBold.eot') format('embedded-opentype'),
+  url('../fonts/RalewayBold.woff2') format('woff2'),
+  url('../fonts/RalewayBold.woff') format('woff'),
+  url('../fonts/RalewayBold.ttf') format('truetype'),
+  url('../fonts/RalewayBold.svg#RalewayBold') format('svg');
+}
+
+@font-face {
+  font-family: 'RalewayMedium';
+  src: url('../fonts/RalewayMedium.eot');
+  src: url('../fonts/RalewayMedium.eot') format('embedded-opentype'),
+  url('../fonts/RalewayMedium.woff2') format('woff2'),
+  url('../fonts/RalewayMedium.woff') format('woff'),
+  url('../fonts/RalewayMedium.ttf') format('truetype'),
+  url('../fonts/RalewayMedium.svg#RalewayMedium') format('svg');
+}
+
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato Regular'), local('Lato-Regular'),
+  url('../fonts/latoregular.woff2') format('woff2'),
+  url('../fonts/latoregular.woff') format('woff'),
+  url('../fonts/latoregular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin pre-dot{
+  content: '';
+  height: 30px;
+  width: 25px;
+  position: absolute;
+  bottom: 50%;
+  transition: 0.3s;
+}
+
+@mixin max-screen($res) {
+  @media screen and (max-width: $res) {
+    @content;
+  }
+}
+
+header {
+  width: 100%;
+  background-color: rgba(7, 7, 11, 0.95);
+  position: relative;
+  .head_bg {
+    background: url("../images/header_bg.png") no-repeat top center;
+    background-size: cover;
+    justify-content: space-between;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    .menu_bg {
+      border-top: solid 3px #262626;
+      background-color: rgba(7, 7, 11, 0.6);
+      min-height: 60px;
+      .navbar {
+        max-width: 1170px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0;
+        background-color: transparent;
+        @include max-screen(1200px) {
+          padding: 0 15px;
+        }
+        @include max-screen(767px) {
+          position: absolute;
+          z-index: 5;
+          background-color: rgba(7, 7, 11, 0.8);
+        }
+        .ml-auto {
+          @include max-screen(767px) {
+            margin-left: 0 !important;
+          }
+        }
+        .logo {
+          position: absolute;
+          z-index: 1;
+          top: -3px;
+          outline: none;
+          background: url("../images/logo_hov.png");
+          background-size: cover;
+          transition: 0.5s;
+          @include max-screen(992px) {
+            transform: rotate(-45deg);
+            top: 10px;
+            left: -60px;
+            background-size: 100%;
+            background-repeat: no-repeat;
+          }
+          @include max-screen(767px) {
+            transform: none;
+            top: -3px;
+            left: auto;
+            right: 15px;
+          }
+          @include max-screen(500px) {
+            width: 50%;
+          }
+          img {
+            max-width: 251px;
+            width: 100%;
+            height: 100%;
+            transition: 0.5s;
+            &:hover {
+              opacity: 0;
+              transition: 0.5s;
+            }
+          }
+        }
+        button {
+          right: 0;
+        }
+        .navbar-nav {
+          @include max-screen(767px) {
+            margin-top: 70px;
+            margin-bottom: 20px;
+          }
+          .nav-item {
+            &:last-child .nav-link {
+              padding-right: 0;
+              margin-right: 0;
+            }
+            .nav-link {
+              font: 18px/18px 'RalewayRegular';
+              color: #a4a4a4;
+              text-transform: uppercase;
+              padding: 25px 0;
+              margin: 0 17px;
+              transition: 0.5s;
+              position: relative;
+              @include max-screen(1200px) {
+                text-transform: none;
+                margin: 0 12px;
+              }
+              @include max-screen(992px) {
+                margin: 0 8px;
+                font-size: 18px;
+              }
+              @include max-screen(767px) {
+                font-size: 12px;
+                text-transform: uppercase;
+                padding: 7px;
+              }
+              &:before {
+                content: "";
+                width: 27px;
+                border-bottom: 2px solid #ff0036;
+                border-top: 3px solid #ff0036;
+                position: absolute;
+                margin: 0 auto;
+                top: -3px;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                opacity: 0;
+                transition: 0.5s;
+                @include max-screen(767px) {
+                  width: 100%;
+                }
+              }
+              &:hover {
+                color: white;
+                transition: 0.3s;
+                &:before {
+                  opacity: 1;
+                  transition: 0.3s;
+                }
+              }
+            }
+          }
+        }
+        .navbar-toggler:not(:disabled):not(.disabled) {
+          width: 40px;
+          height: 40px;
+          margin: 15px 15px 15px 0;
+          padding: 0;
+          color: white;
+          border: solid 2px #ff0337;
+          border-radius: 10px;
+          outline: none;
+          @include max-screen(767px) {
+            position: absolute;
+            left: 15px;
+            top: 0;
+
+          }
+        }
+      }
+    }
+  }
+
+
+
+
+
+
+  .container {
+    max-width: 1400px;
+    width: 100%;
+    .menu_content {
+      max-width: 1170px;
+      width: 100%;
+      margin: 180px auto 0;
+      padding-bottom: 213px;
+      @include max-screen(1200px){
+        max-width: 90%;
+      }
+      @include max-screen(767px){
+        max-width: 85%;
+      }
+
+      h1{
+        font: 30px 'RalewayBold';
+        text-align: center;
+        color: #ff0036;
+        margin-bottom: 40px;
+        span{
+          color: white;
+        }
+      }
+      .carousel-content{
+        p {
+          font: 16px/22px 'Lato';
+          font-weight: 400;
+          color: white;
+          text-align: center;
+          margin-bottom: 0;
+          @include max-screen(992px){
+            font-size: 14px;
+            line-height: 20px;
+          }
+          @include max-screen(767px){
+            font-size: 12px;
+            line-height: 16px;
+            text-align: justify;
+          }
+        }
+        .content_links{
+          justify-content: center;
+          display: flex;
+          margin-top: 48px;
+          @include max-screen(767px){
+            margin-top: 20px;
+          }
+          a {
+            width: 170px;
+            background-color: #131313;
+            font: 20px 'RalewayMedium';
+            line-height: 14px;
+            text-transform: uppercase;
+            color: white;
+            text-decoration: none;
+            padding: 17px 0 18px;
+            display: inline-block;
+            text-align: center;
+            margin: 0 15px;
+            transition: 0.3s;
+            &:hover {
+              background-color: #ff0036;
+            }
+            @include max-screen(1200px){
+              width: 150px;
+              font-size: 17px;
+            }
+            @include max-screen(767px){
+              width: 120px;
+              font-size: 13px;
+              padding: 12px 0;
+            }
+          }
+        }
+      }
+      .carousel{
+        position: relative;
+        max-width: 1070px;
+        //border: solid 1px red;
+        width: 100%;
+        margin: 0 auto;
+        .owl-spin{
+          margin: 0 15px;
+        }
+        .owl-carousel {
+          max-width: 1170px;
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          .owl-nav .owl-prev {
+            @include pre-dot;
+            background: url("../images/arrow-left.svg") no-repeat;
+            left: -140px;
+            @include max-screen(1200px){
+              left: -40px;
+            }
+            @include max-screen(767px){
+              left: -30px;
+            }
+            &:hover {
+              background-image: url("../images/arrow-left-red.svg");
+            }
+          }
+          .owl-nav .owl-next {
+            @include pre-dot;
+            background: url("../images/arrow-right.svg") no-repeat;
+            right: -130px;
+            @include max-screen(1200px){
+              right: -30px;
+            }
+            @include max-screen(767px){
+              right: -20px;
+            }
+            &:hover {
+              background-image: url("../images/arrow-right-red.svg");
+            }
+          }
+        }
+      }
+    }
+  }
+}
